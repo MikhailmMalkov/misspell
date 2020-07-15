@@ -6,7 +6,7 @@ var logger = require('morgan');
 var mongo = require('mongodb');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-
+var mongodb = require("mongodb");
 var app = express();
 var fs = require('fs');
 // view engine setup
@@ -40,103 +40,53 @@ app.use(function(err, req, res, next) {
 
 // game
 class Game {
-  function create_Exercise(){
+
+  create_Exercise(){
 
   };
-  function count_Points(){
+
+  count_Points(){
 
   };
-  function get_Player_Answer(){
+
+  get_Player_Answer(){
 
   };
+
 };
 // misspellings
-
-var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://localhost:27017/msp_db";
-
-MongoClient.connect(url, function(err, db) {
-  if (err) throw err;
-  console.log("Database created!");
-  db.close();
-});
-MongoClient.connect(url, function(err, db) {
-  if (err) throw err;
-  var dbo = db.db("msp_db");
-  dbo.createCollection("misspellings", function(err, res) {
-    if (err) throw err;
-    console.log("Collection created!");
-    db.close();
-  });
-
-MongoClient.connect(url, function(err, db) {
-  if (err) throw err;
-  var dbo = db.db("msp_db");
-  var myobj = { word: "Company Inc", misspelling: "Highway 37" };
-  dbo.collection("misspellings").insertOne(myobj, function(err, res) {
-    if (err) throw err;
-    console.log("1 document inserted");
-    db.close();
-  });
-});
-});
 class Misspellings {
-  function delete_correct_words(){
-    fs.readFile('./misspelling.txt', function read(err, data) {
-    if (err) {
-        throw err;
-    }
-    const content = data;
-    for (i=0, i<data.length, i++)
-
-    console.log(content);
-    processFile(content);
-});
-
-    for ()
-    for (i=0, i<mSpellings.length, i++) {
-      if misspellings
+  delete_correct_words() {
+      fs.readFile('./misspelling.txt', function read(err, data) {
+        if (err) throw err;
+        const content = data;
+      });
     };
-  };
-  function import_list_of_words(){
+    import_list_of_words(){
 
-  };
-  function delete_duplicates(){
+    };
+    delete_duplicates(){
 
-  };
-  function convert_db_into_json(){
+    };
 
-  };
+    convert_db_into_json(){
 
+    };
 };
+
 // exercise
 class Exercise {
-  function take_word_boolean_pair(){
-    MongoClient.connect(url, function(err, db) {
-    if (err) throw err;
-    var dbo = db.db("msp_db");
-    dbo.collection("misspellings").findOne({}, function(err, result) {
-      if (err) throw err;
-      console.log(result.name);
-      db.close();
-  });
-});
-  return pair
+
+
+  take_word_boolean_pair(){
+
   };
-  function display_Exercise(pair){
-    var word_Pair = pair
-    function display_questions(word_Pair){
+  tick(){
 
     };
-    function tick(){
 
-    };
-  };
-
-  function(){
-
-  };
 };
+
 app.listen(4000, function(){
   console.log("Listening on port 4000")
 });
