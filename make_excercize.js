@@ -1,32 +1,23 @@
-function make_excercize(sm_array) {
-  var questions_array = [];
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb://localhost:27017/";
 
-  for (i in sm_array) {
-    var question = {};
-    var correct_or_not = Math.random();
+function get_missp_options(exerc_num) {
 
-    if (correct_or_not > 0.3) {
-      question = {option: sm_array[i]['word'], correct: true};
-    } else {
-      question = {option: sm_array[i]['misspelling'], correct: false};
-    };
+  MongoClient.connect(url, function(err, db) {
+    if (err) throw err;
 
-    questions_array.push(question);
-  };
+    var dbo = db.db("missp_db");
+    var coll = dbo.collection('words_and_missp');
 
-  return questions_array;
+    var cursor = coll.aggregate([{$sample: {size: exerc_num }}]);
+
+    cursor.get(function(err, res){
+      if (err) throw err;
+      console.log(res);
+      db.close();
+    });
+  });
+
 }
 
-var sample_array = [
-  {word: 'caught', misspelling: 'cought'},
-  {word: 'name', misspelling: 'neim'},
-  {word: 'fight', misspelling: 'fite'},
-  {word: 'travel', misspelling: 'trevel'},
-  {word: 'fire', misspelling: 'faire'},
-];
-
-exerc = make_excercize(sample_array);
-
-for (i in exerc) {
-  console.log(exerc[i]);
-};
+get_missp_options(10);
