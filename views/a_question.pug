@@ -1,0 +1,26 @@
+doctype html
+html
+  head
+    title= title
+  body
+    form#create-shift-form(action='/shifts/new', method='post')
+      div.form-group
+        p Select all of the correctly spelled words:
+          div.checkbox-inline
+            input.checkbox-input#create-shift-mon(type='checkbox', name='days[]', value='Mon')
+            label(for='create-shift-mon') word_1
+          div.checkbox-inline
+            input.checkbox-input#create-shift-tue(type='checkbox', name='days[]', value='Tue')
+            label(for='create-shift-tue') word_2
+          div.checkbox-inline
+            input.checkbox-input#create-shift-wed(type='checkbox', name='days[]', value='Wed')
+            label(for='create-shift-wed') word_3
+          div.checkbox-inline
+            input.checkbox-input#create-shift-thur(type='checkbox', name='days[]', value='Thur')
+            label(for='create-shift-thur') word_4
+          div.checkbox-inline
+            input.checkbox-input#create-shift-thur(type='checkbox', name='days[]', value='Thur')
+            label(for='create-shift-thur') word_5
+    button
+      p
+        em= answer
