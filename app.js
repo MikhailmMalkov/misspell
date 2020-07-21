@@ -38,7 +38,7 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-// game
+
 class Game {
 
   create_Exercise(){
@@ -53,8 +53,9 @@ class Game {
 
   };
 
-};
-// misspellings
+}; // game
+
+
 class Misspellings {
   delete_correct_words() {
       fs.readFile('./misspelling.txt', function read(err, data) {
@@ -72,11 +73,11 @@ class Misspellings {
     convert_db_into_json(){
 
     };
-};
 
-// exercise
+}; // misspellings
+
+
 class Exercise {
-
 
   take_word_boolean_pair(){
 
@@ -85,7 +86,8 @@ class Exercise {
 
     };
 
-};
+}; // exercise
+
 
 app.listen(4000, function(){
   console.log("Listening on port 4000")
