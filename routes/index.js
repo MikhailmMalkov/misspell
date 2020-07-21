@@ -4,7 +4,6 @@ var router = express.Router();
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb://localhost:27017/";
 
-
 function make_excercize(sm_array) {
   var questions_array = [];
 
