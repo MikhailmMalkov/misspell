@@ -22,11 +22,10 @@ function make_excercize(sm_array) {
   };
 
   return questions_array;
-}
+};
 
 
 function get_missp_options(exerc_num) {
-
   MongoClient.connect(url, function(err, db) {
     if (err) throw err;
 
@@ -38,6 +37,7 @@ function get_missp_options(exerc_num) {
     cursor.get(function(err, res){
       if (err) throw err;
       var five_pairs = make_excercize(res);
+
       router.get('/current_question', function(req, res, next) {
         res.render('a_question', {
           title: 'Question x',
@@ -50,10 +50,11 @@ function get_missp_options(exerc_num) {
           text: "Sample"
         });
       });
-      db.close();
     });
+    db.close();
   });
 }; // function get_missp_options
+
 
 // Separate get_missp_options(), make_excercize(), and router.get() from each other and make get_missp_options() more descriptive.
 get_missp_options(5);
