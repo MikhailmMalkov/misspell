@@ -9,6 +9,7 @@ var usersRouter = require('./routes/users');
 var mongodb = require("mongodb");
 var app = express();
 var fs = require('fs');
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
@@ -41,50 +42,129 @@ app.use(function(err, req, res, next) {
 
 class Game {
 
-  create_Exercise(){
-
+  // 1. Константы для: количества заданий, количества вопросов в заданиях, очков за правильный/неправильный ответ.
+  // 2. Инициализация новой игры (обнулить счетчик упражнений, баллов)
+  start() {
+    this.numExercises = 10;
+    this.numQuestionsInExercise = 5;
+    this.correctAnswerPoints = 1;
+    this.incorrectAnswerPoints = -1;
+    this.excerciseCounter = 0;
+    this.totalPoints = 0;
   };
 
-  count_Points(){
-
+  // 3. Вести счетчики упражнений и баллов (методы для обновления счетчиков)
+  //      - Увеличить счетчик упражнений на 1
+  //      - Увеличить счетчик баллов на N
+  updateExcerciseCounter() {
+    this.excerciseCounter += 1;
   };
 
-  get_Player_Answer(){
-
+  updatePoints(num) {
+    this.pointCounter += num;
   };
 
+  // 4. Проверка "закончилась ли игра?"
+  over?() {
+    if (this.excerciseCounter >= this.numExercises) {
+      return true;
+    } else {
+      return false;
+    };
+  };
 }; // game
 
 
 class Misspellings {
-  delete_correct_words() {
-      fs.readFile('./misspelling.txt', function read(err, data) {
-        if (err) throw err;
-        const content = data;
-      });
-    };
-    import_list_of_words(){
 
-    };
-    delete_duplicates(){
+  // 1. Загрузить в БД список слов и мисспеллингов из текстового файла
+  // 2. Почистить БД от "плохих" слов
+  //      - убрать дубликаты
+  //      - слово или мисспеллинг короче трех букв
+  //      - убрать географические названия
+  //      - убрать имена
+  //      - убрать мисспеллинги, которые равны правильным словам
+  // 3. Достать из БД N случайных слов
 
-    };
+  // 1. Загрузить в БД список слов и мисспеллингов из текстового файла
+  importWords() {
 
-    convert_db_into_json(){
+  };
 
-    };
+  // 2. Почистить БД от "плохих" слов
+  сleanDB() {
+    //      - убрать дубликаты
+    //      - слово или мисспеллинг короче трех букв
+    //      - убрать географические названия
+    //      - убрать имена
+    //      - убрать мисспеллинги, которые равны правильным словам
+  };
+
+  //      - убрать дубликаты
+  deleteDuplicates(){
+
+  };
+
+  //      - убрать географические названия
+  deleteGeo() {
+
+  };
+
+  //      - убрать имена
+  deleteProperNames() {
+
+  };
+
+  //      - убрать мисспеллинги, которые равны правильным словам
+  deleteCorrectWords() {
+
+  };
+
+  // 3. Достать из БД N случайных слов
+  getNWords() {
+
+  };
 
 }; // misspellings
 
 
 class Exercise {
 
-  take_word_boolean_pair(){
+  // 1. Создать новое упражнение
+  //      - Сформировать задание: 5 слов + правильные/нет?
+  create() {
 
   };
-  tick(){
 
-    };
+  //      - Достать из БД 5 случайных слов с мисспеллингом
+  getWords() {
+
+  }
+
+  // 2. Вывести упражнение на экран
+  show() {
+
+  }
+
+  // 3. Получить ответ игрока
+  getPlayerAnswer(){
+
+  };
+
+  // 4. Посчитать баллы за одно упражнение
+  countAnswerPoints() {
+
+  }
+
+  // 5. Вывести результат упражнения на экран
+  showExcersiseResult() {
+
+  }
+
+  // 6. Закончить упражнение (обновить счетчики упражнений и баллов)
+  finishExcersise() {
+
+  }
 
 }; // exercise
 

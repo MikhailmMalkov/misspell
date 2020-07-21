@@ -24,8 +24,6 @@ fs.readFile('missp.txt', function(err, data) {
       };
     };
 
-
-
     MongoClient.connect(url, function(err, db) {
       if (err) throw err;
 
