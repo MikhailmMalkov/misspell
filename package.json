@@ -16,7 +16,7 @@
     "mongoose": "^5.9.24",
     "morgan": "~1.9.1",
     "plain-text-data-to-json": "^1.0.3",
-    "pug": "2.0.0-beta11"
+    "pug": "3.0.1"
   },
   "description": "Spelling game",
   "main": "app.js",
